@@ -7,8 +7,8 @@ import {
   nftaddress, nftmarketaddress
 } from '../config'
 
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
+import NFT from '../jsons/NFT.json'
+import Market from '../jsons/NFTMarket.json'
 
 let rpcEndpoint = null
 
