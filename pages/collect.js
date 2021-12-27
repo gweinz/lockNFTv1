@@ -72,12 +72,12 @@ export default function Home() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-1/3 mt-40 flex border bg-indigo-700 border-bg-gray-100 p-10 rounded-2xl mt-10 flex-col ">
-        <p className='text-white mb-2 font-bold'>Entered password for protected NFT</p>
+      <div className="w-1/3 mt-40 flex border  border-bg-gray-100 p-10 rounded-2xl mt-10 flex-col ">
+       
         <input type="text" name="password" id="password" 
         className="focus:border-indigo-700 focus:text-indigo-700 mb-5 block w-full p-3 sm:text-sm border border-indigo-700 rounded" placeholder="password..."
         onChange={e => updateFormInput({ ...formInput, password: e.target.value })}/>
-        <button className="w-full bg-white text-indigo-700 font-bold py-2 px-12 border-indigo-700 rounded border brounded hover:bg-indigo-500 hover:text-white" onClick={() => enterPassword()}>Enter</button>
+        <button className="w-full bg-white text-red-300 font-bold py-2 px-12 rounded hover:bg-purple-200 hover:text-white" onClick={() => enterPassword()}>Enter</button>
         
       </div>
     </div>
@@ -86,8 +86,8 @@ export default function Home() {
   if (loadingState === 'loaded' && !nfts.length) 
   return (<div className="flex justify-center">
   <div className="grid grid-cols-1 mt-40 gap-4 pt-4">
-   <p className="font-semibold text-2xl text-indigo-700">Nothing to see here...</p>
-   <p className="font-semibold text-small text-indigo-700">Either password was wrong or NFT does not exist</p>
+   <p className="font-semibold text-2xl text-white">Nothing to see here...</p>
+   <p className="font-semibold text-small text-white">Either password was wrong or NFT does not exist</p>
   </div>
  </div>)
  
@@ -97,16 +97,16 @@ export default function Home() {
         <div className="grid grid-cols-1 mt-40 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="border w-1/3 shadow-2xl mx-auto rounded-xl overflow-hidden">
+              <div key={i} className="border p-4 bg-white w-1/3 shadow-2xl mx-auto rounded-xl overflow-hidden">
                 <img src={nft.image} />
-                <div className="p-4">
+                <div className="p-2">
                   <p className="text-2xl font-semibold">{nft.name}</p>
                   <div style={{ overflow: 'hidden' }}>
                     <p className="text-gray-400">{nft.description}</p>
                   </div>
                 </div>
-                <div className="p-8 bg-indigo-700">
-                  <button className="w-full bg-white text-indigo-700 font-bold py-2 px-12 rounded hover:bg-indigo-500 hover:text-white" onClick={() => buyNft(nft)}>Collect</button>
+                <div className="bg-white">
+                  <button className="w-full bg-white text-red-400 font-bold py-2 px-12 rounded hover:bg-red-400 hover:text-white" onClick={() => buyNft(nft)}>Collect</button>
                 </div>
               </div>
             ))

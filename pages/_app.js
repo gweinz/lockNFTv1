@@ -1,10 +1,11 @@
 import '../styles/globals.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function Marketplace({ Component, pageProps }) {
   return (
-    <div>
-      <nav className="flex fixed w-full font-mono justify-start  border-b bg-indigo-700 flex p-6">
+    <body className="background min-h-screen">
+      <nav className="flex fixed w-full font-mono justify-start  flex p-6">
       <Link href="/">
         <a className="text-4xl text-white font-bold">Lock & Key</a>
       </Link>
@@ -27,12 +28,13 @@ function Marketplace({ Component, pageProps }) {
               My NFTs
             </a>
           </Link>
-        
-        
+
+          
+          {/* <Image className="w-2/3 h-full mx-auto" src="/pg.png"></Image> */}
         </div>
       </nav>
       <Component {...pageProps} />
-    </div>
+    </body>
   )
 }
 

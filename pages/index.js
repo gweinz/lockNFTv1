@@ -1,14 +1,5 @@
-import { ethers } from 'ethers'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Web3Modal from "web3modal"
-
-import {
-  nftaddress, nftmarketaddress
-} from '../config'
-
-import NFT from '../jsons/NFT.json'
-import Market from '../jsons/NFTMarket.json'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let rpcEndpoint = null
 
@@ -16,29 +7,83 @@ if (process.env.NEXT_PUBLIC_WORKSPACE_URL) {
   rpcEndpoint = process.env.NEXT_PUBLIC_WORKSPACE_URL
 }
 
+
 export default function Home() {
+
+  async function addMumbai() {
+    
+    window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [{
+      chainId: '0x13881',
+      chainName: 'Mumbai',
+      nativeCurrency: {
+          name: 'MATIC Token',
+          symbol: 'MATIC',
+          decimals: 18
+      },
+      rpcUrls: ['https://rpc-mumbai.maticvigil.com'],
+      blockExplorerUrls: ['https://mumbai.polygonscan.com/']
+      }]
+      })
+      .catch((error) => {
+      console.log(error)
+      }) 
+
+      toast('🦄 Mumbai Network Added!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+  }
   
   return (
     <div className="flex font-mono justify-center">
-        <div className="shadow-xl mt-40 rounded-2xl mt-20 p-10 w-1/2 bg-indigo-700">
-          <p className="text-white mb-8 text-2xl font-semibold">
+        <div className="shadow-xl mt-40 rounded-2xl mt-20 p-10 w-1/2 bg-white">
+          <p className="rainbow-text mb-8 text-2xl font-semibold">
             Welcome to Lock & Key
           </p>
-          <p className='text-white mb-4'>
-            We make it easy to mint an NFT to the Polygon network, and password protect the NFT so only the right person can collect the NFT!
+          <p className='rainbow-text mb-4'>
+            List password protected NFTs on Polygon Testnet!
           </p>
-          <p className='text-white mb-4'>
-            Polygon enables effectively zero gas fees so you don't have to worry about paying a bunch just to create an NFT!
-          </p>
-
-          <p className='text-white mb-4'>
-            Go to "List" and you can pass in the desired information to make your own Polygon NFT. Then, tell whoever you want to mint it the password and they'll be able to find the specific NFT on the "Collect" page.
+          <p className='rainbow-text mb-4'>
+            This is a work in progress but down the road I want to integrate secured delivery through 2FA via phone number!
           </p>
 
-          <p className='text-white text-small'>
-            Just add https://rpc-mumbai.maticvigil.com network to your MetaMask wallet and get some test coins from Polygon faucet.
+          <p className='rainbow-text mb-4'>
+            Click the Polygon logo to add the necessary network to Metamask!
           </p>
+
+
+          <img
+            onClick={addMumbai}
+            className='float-right '  
+            src="/pg.png"
+            width={50}
+            height={50}
+          />
+
+          
         </div>
+
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          />
+          {/* Same as */}
+          <ToastContainer />
     
     </div>
   )

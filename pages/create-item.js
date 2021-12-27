@@ -4,6 +4,8 @@ import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
 
+
+
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
 import {
@@ -77,23 +79,23 @@ export default function CreateItem() {
 
   return (
     <div className="flex font-mono justify-center">
-      <div className="w-1/2 mt-40 flex border bg-indigo-700 border-bg-gray-100 p-10 rounded-2xl mt-10 flex-col ">
-        <p className='text-xl text-white font-semibold'>
+      <div className="w-1/2 mt-40 flex border bg-white  p-10 rounded-2xl mt-10 flex-col ">
+        <p className='text-xl rainbow-text font-semibold'>
           List NFT
         </p>
         <input 
           placeholder="Asset Name"
-          className="mt-4 border rounded p-4"
+          className="mt-4 rainbow-text border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
         />
         <textarea
           placeholder="Asset Description"
-          className="mt-2 border rounded p-4"
+          className="mt-2 rainbow-text border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
         />
         <input
           placeholder="Password"
-          className="mt-2 border rounded p-4"
+          className="mt-2 rainbow-text border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, password: e.target.value })}
         />
         <input
@@ -107,7 +109,7 @@ export default function CreateItem() {
             <img className="rounded mx-auto mt-4" width="350" src={fileUrl} />
           )
         }
-        <button onClick={createMarket} className="font-bold  mt-4 bg-white text-indigo-700 rounded-2xl p-4 shadow-lg hover:bg-indigo-200">
+        <button onClick={createMarket} className="w-full bg-white text-red-300 font-bold py-2 px-12 rounded hover:bg-purple-200 hover:text-white">
           Create
         </button>
       </div>

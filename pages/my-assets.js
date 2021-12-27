@@ -51,10 +51,10 @@ export default function MyAssets() {
   return (
     <div className="flex justify-center">
       <div className="p-4">
-        <div className="grid grid-cols-1 mt-40 gap-4 pt-4">
+        <div className="grid grid-cols-2 mt-40 gap-4 pt-4">
           {
            nfts.map((nft, i) => (
-            <div key={i} className="border w-1/3 shadow-2xl mx-auto rounded-xl overflow-hidden">
+            <div key={i} className="border w-1/2 bg-white p-5 bshadow-2xl mx-auto rounded-xl overflow-hidden">
               <img src={nft.image} />
               <div className="p-4">
                 <p className="text-2xl font-semibold">{nft.name}</p>
